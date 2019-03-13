@@ -1,0 +1,58 @@
+﻿<Page x:Class="magasin.catalog"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:magasin"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="catalog">
+
+    <Grid Background="Beige">
+        <StackPanel>
+            <Menu Height="30" Margin="0,0,0,0" Background="Beige">
+                <MenuItem Header="Categorie de musique" Height="32"  Background="LightGray" FontWeight="Bold" HorizontalAlignment="Center" Foreground="SeaGreen" Margin="0,-1,0,-30">
+                    <MenuItem Header="Tous" Foreground="Black" Click="MenuItem_Click"/>
+                    <MenuItem Header="Jazz" Foreground="Black" Click="MenuItem_Click"/>
+                    <MenuItem Header="Rock" Foreground="Black" Click="MenuItem_Click"/>
+                    <MenuItem Header="Classique" Foreground="Black" Click="MenuItem_Click"/>
+                    <MenuItem Header="Electro" Foreground="Black" Click="MenuItem_Click"/>
+                    <MenuItem Header="Rap" Foreground="Black" Click="MenuItem_Click"/>
+                </MenuItem>
+            </Menu>
+            <DockPanel Background="Beige" Height="573">
+                <DataGrid Name="products" ItemsSource="{Binding}" AutoGenerateColumns="False" Width="700" SelectionChanged="product_selected">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="Image"  IsReadOnly="True" Width="*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding image}" Width="50"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="Nom" Binding="{Binding name}" Width="*"/>
+                        <DataGridTextColumn Header="Description" Binding="{Binding description}" Width="*" />
+                        <DataGridTextColumn Header="Reference" Binding="{Binding reference}" Width="*"/>
+                        <DataGridTextColumn Header="Prix" Binding="{Binding price}" Width="*"/>
+                        <DataGridTextColumn Header="Quantité en stock" Binding="{Binding quantity}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Width="280" Background="Beige">
+                    <TextBlock HorizontalAlignment="Center" FontSize="20">Votre Produit</TextBlock>
+                    <Label>Nom</Label>
+                    <TextBlock Height="25" Background="White" x:Name="nameProduct"></TextBlock>
+                    <Label>Description</Label>
+                    <TextBlock Height="25" Background="White" x:Name="descProduct"></TextBlock>
+                    <Label>Reference</Label>
+                    <TextBlock Height="25" Background="White" x:Name="refProduct"></TextBlock>
+                    <Label>Prix</Label>
+                    <TextBlock Height="25" Background="White" x:Name="priceProduct"></TextBlock>
+                    <Label>Stock</Label>
+                    <TextBlock Height="25" Background="White" x:Name="stockProduct"></TextBlock>
+                    <Label>image</Label>
+                    <Image Height="150" Width="280" x:Name="image" Source="{Binding image}" />
+                </StackPanel>
+            </DockPanel>
+        </StackPanel>
+    </Grid>
+</Page>
